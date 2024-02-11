@@ -4,6 +4,7 @@ export interface Task {
   completed: boolean;
   dateAdded: string;
   dateCompleted: string;
+  category ?: string; 
 }
 
 export const utilityGetTasksFromLS = () => {
@@ -27,8 +28,11 @@ export const toggleTaskComplete = (id: string) => {
   if (task != null) {
     prevTasks[taskIndex].completed = true;
     prevTasks[taskIndex].dateCompleted = new Date().toLocaleString();
-    prevTasks[taskIndex] = task;
+    prevTasks[taskIndex] = task;    
   }
+
+  localStorage.setItem("tasks" , JSON.stringify(prevTasks));
+  
   const completed: Task[] = JSON.parse(
     localStorage.getItem("completed") || "[]"
   );

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
@@ -8,6 +7,7 @@ function App() {
 
 
   const [completedPage, setViewCompleted] = useState(false);
+  
 
   const changePage = () =>{
     const newValue = !completedPage;
@@ -16,9 +16,13 @@ function App() {
     console.log(newValue)
   }
 
+  const returnToHome = () =>{
+    setViewCompleted(false);
+  }
+
   return (
     <>
-   <Navbar changePage={changePage}/>
+   <Navbar changePage={changePage} returnToHome={returnToHome}/>
    <HomePage completedPage={completedPage}/>
    </>
   );

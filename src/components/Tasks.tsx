@@ -7,16 +7,18 @@ import {
 } from "../utilities/utilities";
 import { Button, FormWrapper, SingleTask, Wrapper } from "../styles/Style";
 import doneIcon from "../assets/done.svg";
+import { MyContext } from "./HomePage";
 
 function Tasks() {
+  const { upload }: any = useContext(MyContext);
+  const { setUpload }: any = useContext(MyContext);
   const [tasks, setTasks] = useState<Task[]>([]);
   const taskList = utilityGetTasksFromLS();
-
 
   useEffect(() => {
     const tasks = utilityGetTasksFromLS();
     setTasks(tasks);
-  }, [utilityGetTasksFromLS()]);
+  }, [upload]);
 
   const tasksList = utilityGetTasksFromLS();
 
@@ -31,17 +33,24 @@ function Tasks() {
           <ul>
             {tasksList.map((task: any, index: number) => (
               <li key={index}>
-                <div >
-                  <SingleTask isCompleted={task.completed === true}>
-                    <strong
+                <div>
+                  <SingleTask isCompleted={task.completed}>
+                    <strong>{task.title}</strong>{" "}
+                    <Button
                       onClick={() => {
-                        utilityRemoveTaskFromLS(task.id);
+                        toggleTaskComplete(task.id);
+                        setUpload(!upload);
                       }}
                     >
-                      {task.title}
-                    </strong>{" "}
-                    <Button onClick={() => toggleTaskComplete(task.id)}>
                       <img src={doneIcon} alt="check" />
+                      <Button
+                        onClick={() => {
+                          utilityRemoveTaskFromLS(task.id);
+                          setUpload(!upload);
+                        }}
+                      >
+                        Delete
+                      </Button>
                     </Button>
                   </SingleTask>
                 </div>

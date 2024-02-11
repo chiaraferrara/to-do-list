@@ -1,12 +1,13 @@
 import React from "react";
+import logo from "../assets/logo.png"
 
-function Navbar({ changePage }: any) {
+function Navbar({ changePage, returnToHome }: any) {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Navbar
+          <a className="navbar-brand" onClick={returnToHome}>
+            <img style={{ height: '50px' }} src={logo}/>
           </a>
           <button
             className="navbar-toggler"
@@ -24,7 +25,7 @@ function Navbar({ changePage }: any) {
               <a
                 className="nav-link active"
                 aria-current="page"
-                onClick={changePage}
+                onClick={returnToHome}
               >
                 All Tasks
               </a>
