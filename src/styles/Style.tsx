@@ -52,3 +52,8 @@ export const FlexCardsContainer = styled.div({
 
 
 })
+
+export const CategoryLabel = styled.div({
+  padding: "5px",
+  fontFamily: "'Kanit', sans-serif"
+})

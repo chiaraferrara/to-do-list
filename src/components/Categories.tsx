@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FlexCardsContainer, FlexRow } from "../styles/Style";
-import all from "../assets/all.png";
-import work from "../assets/work.png";
-import hobbies from "../assets/hobbies.png";
-import selfcare from "../assets/selfcare.png";
-import other from "../assets/other.png";
+import { CategoryLabel, FlexCardsContainer, FlexRow } from "../styles/Style";
 import { Task, utilityGetTasksFromLS } from "../utilities/utilities";
+import "../App.css"
 
 function Categories() {
   const [category, setCategory] = useState("all");
@@ -33,30 +29,15 @@ function Categories() {
         <h2>Tasks by Category</h2>
       </div>
       <FlexRow>
-        <img style={iconStyle} onClick={() => setCategory("all")} src={all} />
-        <img
-          style={iconStyle}
-          onClick={() => {
-            setCategory("work");
-            console.log("work");
-          }}
-          src={work}
-        />
-        <img
-          style={iconStyle}
-          onClick={() => setCategory("hobbies")}
-          src={hobbies}
-        />
-        <img
-          style={iconStyle}
-          onClick={() => setCategory("selfcare")}
-          src={selfcare}
-        />
-        <img
-          style={iconStyle}
-          onClick={() => setCategory("other")}
-          src={other}
-        />
+
+        <CategoryLabel className="categoryLabel" onClick={() => setCategory("all")}>all</CategoryLabel>
+
+        <CategoryLabel className="categoryLabel" onClick={() => setCategory("work")}>work</CategoryLabel>
+        <CategoryLabel className="categoryLabel" onClick={() => setCategory("hobbies")}>hobbies</CategoryLabel>
+
+        <CategoryLabel className="categoryLabel" onClick={() => setCategory("selfcare")}>selfcare</CategoryLabel>
+        <CategoryLabel className="categoryLabel" onClick={() => setCategory("other")}>other</CategoryLabel>
+      
       </FlexRow>
 
       {category == "all" ? (

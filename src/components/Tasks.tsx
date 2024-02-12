@@ -8,6 +8,7 @@ import {
 import { Button, FormWrapper, SingleTask, Wrapper } from "../styles/Style";
 import doneIcon from "../assets/done.svg";
 import { MyContext } from "./HomePage";
+import deleteIcon from "../assets/delete.svg"
 
 function Tasks() {
   const { upload }: any = useContext(MyContext);
@@ -49,7 +50,7 @@ function Tasks() {
                           setUpload(!upload);
                         }}
                       >
-                        Delete
+                       <img src={deleteIcon}/>
                       </Button>
                     </Button>
                   </SingleTask>
